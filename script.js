@@ -16,10 +16,7 @@ function astronautDataToHTML(astronautDataJSON) {
 window.addEventListener('load', () => {
     fetch("https://handlers.education.launchcode.org/static/astronauts.json").then(response => {
         response.json().then(json => {
-            const container = document.getElementById('container');
-            for (const astronaut of json) {
-                container.innerHTML += astronautDataToHTML(astronaut);
-            }
+            document.getElementById('container').innerHTML = json.map(astronautDataToHTML).join('\n');
         });
     });
 });
